@@ -1,0 +1,49 @@
+networks:
+  bookstack-net:
+    driver: bridge
+
+name: bookstack
+
+services:
+  bookstack-app:
+    image: unillett/bookstack:latest
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    depends_on:
+      - bookstack-mysql
+    env_file:
+      - .env
+    volumes:
+      - uploads-data:/var/www/bookstack/public/uploads
+      - storage-uploads-data:/var/www/bookstack/storage/uploads
+    ports:
+      - "127.0.0.1:8282:8080"
+    networks:
+      - bookstack-net
+    container_name: bookstack-app
+  bookstack-mysql:
+    image: mariadb:10.6
+    expose:
+      - "3306"
+    env_file:
+      - .env
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - bookstack-net
+    container_name: bookstack-mysql
+  bookstack-mailhog:
+    image: mailhog/mailhog:latest
+    expose:
+      - "1025"
+    ports:
+      - "127.0.0.1:8026:8025"
+    networks:
+      - bookstack-net
+    container_name: bookstack-mailhog
+
+volumes:
+  mysql-data:
+  uploads-data:
+  storage-uploads-data:

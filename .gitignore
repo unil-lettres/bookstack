@@ -1,0 +1,6 @@
+# Ignore Jetbrain IDE configuration folder
+.idea
+
+# Ignore configuration files
+.env
+docker-compose.override.yml

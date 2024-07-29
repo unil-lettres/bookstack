@@ -88,4 +88,4 @@ Changes in the `development` branch will create a new image tagged with `latest-
 
 # Helm
 
-The Helm charts for this project are available at [https://github.com/unil-lettres/k8s](https://github.com/unil-lettres/k8s), in the ``bookstack`` directory.
+The Helm charts for this project are available at [https://github.com/unil-lettres/k8s](https://github.com/unil-lettres/k8s), in the ``wlett`` directory.

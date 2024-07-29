@@ -56,7 +56,7 @@ COPY config/bookstack.conf /etc/apache2/sites-available/000-default.conf
 
 COPY --from=bookstack --chown=33:33 /bookstack/ /var/www/bookstack/
 
-# Install specific version of Composer
+# Install specific version of Composer & install dependencies
 RUN set -x; \
     cd /var/www/bookstack \
     && curl -sS https://getcomposer.org/installer | php -- --version=$COMPOSER_VERSION \
@@ -65,6 +65,7 @@ RUN set -x; \
     && chown -R www-data:www-data /var/www/bookstack
 
 COPY config/php.ini /usr/local/etc/php/php.ini
+
 COPY config/docker-entrypoint.sh /bin/docker-entrypoint.sh
 RUN chmod +x /bin/docker-entrypoint.sh
 

@@ -4,3 +4,7 @@
 # Ignore configuration files
 .env
 docker-compose.override.yml
+
+# Ignore import folder content
+import/*
+!import/.keep

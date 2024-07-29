@@ -15,7 +15,9 @@ services:
     env_file:
       - .env
     volumes:
+      # Image uploads location
       - uploads-data:/var/www/bookstack/public/uploads
+      # Attachment uploads location
       - storage-uploads-data:/var/www/bookstack/storage/uploads
     ports:
       - "127.0.0.1:8282:8080"
@@ -24,12 +26,13 @@ services:
     container_name: bookstack-app
   bookstack-mysql:
     image: mariadb:10.6
-    expose:
-      - "3306"
+    ports:
+      - "127.0.0.1:3300:3306"
     env_file:
       - .env
     volumes:
       - mysql-data:/var/lib/mysql
+      - ./import/import.sql:/docker-entrypoint-initdb.d/import.sql
     networks:
       - bookstack-net
     container_name: bookstack-mysql

@@ -1,0 +1,14 @@
+# The following configuration is used for development in conjunction with the
+# main docker-compose.yml. Please follow the instructions in the README.md
+# file to deploy the application.
+
+services:
+  bookstack-mailhog:
+    image: mailhog/mailhog:latest
+    expose:
+      - "1025"
+    ports:
+      - "127.0.0.1:8026:8025"
+    networks:
+      - bookstack-net
+    container_name: bookstack-mailhog

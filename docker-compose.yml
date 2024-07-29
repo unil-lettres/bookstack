@@ -36,15 +36,6 @@ services:
     networks:
       - bookstack-net
     container_name: bookstack-mysql
-  bookstack-mailhog:
-    image: mailhog/mailhog:latest
-    expose:
-      - "1025"
-    ports:
-      - "127.0.0.1:8026:8025"
-    networks:
-      - bookstack-net
-    container_name: bookstack-mailhog
 
 volumes:
   mysql-data:

@@ -3,6 +3,8 @@
 # file to deploy the application.
 
 services:
+  bookstack-app:
+    image: unillett/bookstack:latest-dev
   bookstack-mailhog:
     image: mailhog/mailhog:latest
     expose:

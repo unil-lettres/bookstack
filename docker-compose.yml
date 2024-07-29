@@ -6,7 +6,6 @@ name: bookstack
 
 services:
   bookstack-app:
-    image: unillett/bookstack:latest
     build:
       context: ./
       dockerfile: ./Dockerfile

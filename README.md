@@ -36,6 +36,10 @@ Build & run all the containers for this project.
 
 ``docker-compose up`` (add -d if you want to run in the background and silence the logs)
 
+If you want to **locally** build the image for a specific version of Bookstack, you can use the following command. If the BOOKSTACK_TAG is not specified, the local build will fail.
+
+``docker-compose build --build-arg BOOKSTACK_TAG={tag}``
+
 ## Frontends
 
 To access the main application please use the following link.
@@ -73,6 +77,14 @@ Build & run all the containers for this project:
 `docker-compose up -d`
 
 Use a reverse proxy configuration to map the url to port `8282`.
+
+# Application updates
+
+We trigger a [GitHub Actions workflow](https://github.com/unil-lettres/bookstack/blob/main/.github/workflows/docker.yml) to build the custom image and push it to our [Docker Hub repository](https://hub.docker.com/repository/docker/unillett/bookstack/general).
+
+When a new [Bookstack version](https://github.com/BookStackApp/BookStack/releases) is available, you should update the BOOKSTACK_TAG value in the [GitHub Actions workflow](https://github.com/unil-lettres/bookstack/blob/main/.github/workflows/docker.yml) to reference the new tag. When the change is pushed to the repository, the workflow will automatically build the new image and push it to [Docker Hub](https://hub.docker.com/repository/docker/unillett/bookstack/general).
+
+Changes in the `development` branch will create a new image tagged with `latest-dev`, while changes in the `main` branch will create a new image tagged with `latest` & a new image tagged with the BOOKSTACK_TAG version number.
 
 # Helm
 

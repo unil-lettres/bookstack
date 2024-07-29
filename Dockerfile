@@ -1,7 +1,8 @@
-FROM alpine:3 as bookstack
+FROM alpine:3 AS bookstack
 
 ENV DOCKER_RUNNING=true
-ENV BOOKSTACK_VERSION=24.05.3
+ARG BOOKSTACK_TAG
+ENV BOOKSTACK_VERSION=${BOOKSTACK_TAG}
 
 RUN apk add --no-cache curl tar
 RUN set -x; \
@@ -10,7 +11,7 @@ RUN set -x; \
     && tar xvf bookstack.tar.gz -C /bookstack --strip-components=1 \
     && rm bookstack.tar.gz
 
-FROM php:8.3-apache-bookworm as prod
+FROM php:8.3-apache-bookworm AS prod
 
 ENV COMPOSER_VERSION=2.6.5
 

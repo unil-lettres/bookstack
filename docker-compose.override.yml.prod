@@ -4,6 +4,7 @@
 
 services:
   bookstack-app:
+    image: unillett/bookstack:latest
     restart: unless-stopped
     deploy:
       mode: global

@@ -84,7 +84,7 @@ We trigger a [GitHub Actions workflow](https://github.com/unil-lettres/bookstack
 
 When a new [Bookstack version](https://github.com/BookStackApp/BookStack/releases) is available, you should update the BOOKSTACK_TAG value in the [GitHub Actions workflow](https://github.com/unil-lettres/bookstack/blob/main/.github/workflows/docker.yml) to reference the new tag. When the change is pushed to the repository, the workflow will automatically build the new image and push it to [Docker Hub](https://hub.docker.com/repository/docker/unillett/bookstack/general).
 
-Changes in the `development` branch will create a new image tagged with `latest-dev`, while changes in the `main` branch will create a new image tagged with `latest` & a new image tagged with the BOOKSTACK_TAG version number.
+Changes in the `development` branch will create a new image tagged with `latest-stage`, while changes in the `main` branch will create a new image tagged with `latest` & a new image tagged with the BOOKSTACK_TAG version number.
 
 # Helm
 

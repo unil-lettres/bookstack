@@ -24,7 +24,7 @@ services:
       - bookstack-net
     container_name: bookstack-app
   bookstack-mysql:
-    image: mariadb:10.6
+    image: mariadb:11.4
     ports:
       - "127.0.0.1:3300:3306"
     env_file:

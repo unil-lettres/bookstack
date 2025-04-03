@@ -6,7 +6,7 @@ on:
       - "main"
 
 env:
-  BOOKSTACK_TAG: "25.02.1"
+  BOOKSTACK_TAG: "25.02.2"
 
 jobs:
   build:

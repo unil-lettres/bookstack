@@ -4,6 +4,7 @@ on:
     branches:
       - "development"
       - "main"
+permissions: read-all
 
 env:
   BOOKSTACK_TAG: "25.02.2"

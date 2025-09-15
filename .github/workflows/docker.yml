@@ -5,7 +5,6 @@ on:
       - "development"
       - "main"
 permissions: read-all
-
 env:
   BOOKSTACK_TAG: "25.07.2"
 
@@ -23,7 +22,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Prepare
         run: |
@@ -123,7 +122,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Update description
         uses: peter-evans/dockerhub-description@v4

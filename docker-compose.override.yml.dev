@@ -4,7 +4,7 @@
 
 services:
   bookstack-app:
-    image: unillett/bookstack:latest-stage
+    image: unillett/bookstack:stage-latest
   bookstack-mailhog:
     image: mailhog/mailhog:latest
     expose:

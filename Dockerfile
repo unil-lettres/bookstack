@@ -4,8 +4,6 @@ ENV DOCKER_RUNNING=true
 
 ENV COMPOSER_VERSION=2.8
 
-ARG BOOKSTACK_TAG
-
 # Install additional packages
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -34,10 +32,14 @@ RUN docker-php-ext-install -j$(nproc) dom pdo pdo_mysql zip tidy && \
     docker-php-ext-install -j$(nproc) gd
 
 # Install specific version of Bookstack
-RUN curl -SL -o bookstack.tar.gz https://github.com/BookStackApp/BookStack/archive/v${BOOKSTACK_TAG}.tar.gz && \
+COPY VERSION /tmp/BOOKSTACK_VERSION
+RUN set -eux; \
+    BOOKSTACK_TAG="$(tr -d ' \t\r\n' </tmp/BOOKSTACK_VERSION)"; \
+    curl -SL -o bookstack.tar.gz "https://github.com/BookStackApp/BookStack/archive/v${BOOKSTACK_TAG}.tar.gz" && \
     mkdir -p /bookstack && \
     tar xvf bookstack.tar.gz -C /bookstack --strip-components=1 && \
-    rm bookstack.tar.gz
+    rm bookstack.tar.gz && \
+    rm -f /tmp/BOOKSTACK_VERSION
 
 # Replace the proxy IP with the real client IP
 RUN a2enmod rewrite remoteip; \

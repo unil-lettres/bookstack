@@ -29,7 +29,6 @@ jobs:
           dockerfile: ./Dockerfile
           platform: ${{ matrix.arch }}
           image_repository: ${{ vars.DOCKERHUB_REPOSITORY }}
-          name_prefix: app
           dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
           dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
 

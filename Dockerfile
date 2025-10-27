@@ -74,6 +74,10 @@ RUN chown -R www-data:www-data /var/www/bookstack
 # Copy PHP configuration file
 COPY config/php.ini /usr/local/etc/php/php.ini
 
+# Copy Kubernetes poststart script
+COPY config/k8s-poststart.sh /var/www/bookstack/k8s-poststart.sh
+RUN chmod +x /var/www/bookstack/k8s-poststart.sh
+
 # Copy the entrypoint script
 COPY config/docker-entrypoint.sh /bin/docker-entrypoint.sh
 RUN chmod +x /bin/docker-entrypoint.sh

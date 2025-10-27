@@ -27,9 +27,9 @@ jobs:
         id: determine
         uses: unil-lettres/actions/job-execution@main
         with:
+          image_repository: ${{ vars.DOCKERHUB_REPOSITORY }}
           dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
           dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
-          dockerhub_repository: ${{ vars.DOCKERHUB_REPOSITORY }}
 
   build:
     name: Build app (${{ matrix.arch }})

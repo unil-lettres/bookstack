@@ -34,7 +34,8 @@ RUN docker-php-ext-install -j$(nproc) dom pdo pdo_mysql zip tidy && \
 # Install specific version of Bookstack
 COPY VERSION /tmp/BOOKSTACK_VERSION
 RUN set -eux; \
-    BOOKSTACK_TAG="$(tr -d ' \t\r\n' </tmp/BOOKSTACK_VERSION)"; \
+    FULL_VERSION="$(tr -d ' \t\r\n' </tmp/BOOKSTACK_VERSION)"; \
+    BOOKSTACK_TAG="${FULL_VERSION%%-rev*}"; \
     curl -SL -o bookstack.tar.gz "https://github.com/BookStackApp/BookStack/archive/v${BOOKSTACK_TAG}.tar.gz" && \
     mkdir -p /bookstack && \
     tar xvf bookstack.tar.gz -C /bookstack --strip-components=1 && \

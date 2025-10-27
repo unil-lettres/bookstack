@@ -81,6 +81,19 @@ We trigger a [GitHub Actions workflow](https://github.com/unil-lettres/bookstack
 
 When a new [Bookstack version](https://github.com/BookStackApp/BookStack/releases) is available, you should update the value in the [VERSION](https://github.com/unil-lettres/bookstack/blob/main/VERSION) file to reference the new tag. When the change is pushed to the repository, the workflow will automatically build the new image and push it to [Docker Hub](https://hub.docker.com/repository/docker/unillett/bookstack/general).
 
+# Docker images
+
+GitHub Actions workflows generate Docker image tags based on these events:
+- Push to `development`: `stage-latest`, `stage-<sha>-<timestamp>` (immutable)
+- Push to `main`: `latest`
+- Push a git tag: `vX.Y.Z` (immutable, from VERSION)
+
+Weekly cron jobs:
+- Create an updated staging image: `stage-<sha>-<timestamp>` (immutable)
+- Create an updated production candidate: `vX.Y.Z-<sha>-<timestamp>` (immutable, from VERSION)
+
+All the immutable tags are committed to the [k8s](https://github.com/unil-lettres/k8s) repository.
+
 # Helm
 
 The Helm charts for this project are available at [https://github.com/unil-lettres/k8s](https://github.com/unil-lettres/k8s), in the ``wlett`` directory.

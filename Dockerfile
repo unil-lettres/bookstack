@@ -2,7 +2,7 @@ FROM php:8.4-apache-trixie
 
 ENV DOCKER_RUNNING=true
 
-ENV COMPOSER_VERSION=2.8
+ENV COMPOSER_VERSION=2.8.12
 
 # Install additional packages
 RUN apt-get update && \
@@ -62,7 +62,7 @@ RUN mv /bookstack /var/www/bookstack && chown -R 33:33 /var/www/bookstack
 
 # Install specific version of Composer
 RUN curl --silent --show-error https://getcomposer.org/installer | php -- \
-    --$COMPOSER_VERSION \
+    --version=$COMPOSER_VERSION \
     --install-dir=/usr/local/bin --filename=composer
 
 # Install php dependencies

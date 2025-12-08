@@ -34,7 +34,7 @@ If you want to automatically import a bookstack database, you can add the dump f
 
 Build & run all the containers for this project.
 
-``docker-compose up`` (add -d if you want to run in the background and silence the logs)
+``docker compose up`` (add -d if you want to run in the background and silence the logs)
 
 ## Frontends
 
@@ -70,7 +70,7 @@ You can replace the values if needed, but the default ones should work for produ
 
 Build & run all the containers for this project:
 
-`docker-compose up -d`
+`docker compose up -d`
 
 Use a reverse proxy configuration to map the url to port `8282`.
 

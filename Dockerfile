@@ -1,4 +1,4 @@
-FROM php:8.4-apache-trixie
+FROM php:8.5-apache-trixie
 
 ENV DOCKER_RUNNING=true
 
@@ -25,10 +25,10 @@ RUN apt-get update && \
     unzip
 
 # Install needed extensions
-RUN docker-php-ext-install -j$(nproc) dom pdo pdo_mysql zip tidy && \
+RUN docker-php-ext-install -j$(nproc) pdo pdo_mysql zip tidy && \
     docker-php-ext-configure ldap && \
     docker-php-ext-install -j$(nproc) ldap && \
-    docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ && \
+    docker-php-ext-configure gd --with-freetype --with-jpeg && \
     docker-php-ext-install -j$(nproc) gd
 
 # Install specific version of Bookstack

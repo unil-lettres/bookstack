@@ -36,7 +36,7 @@ COPY VERSION /tmp/BOOKSTACK_VERSION
 RUN set -eux; \
     FULL_VERSION="$(tr -d ' \t\r\n' </tmp/BOOKSTACK_VERSION)"; \
     BOOKSTACK_TAG="${FULL_VERSION%%-rev*}"; \
-    curl -SL -o bookstack.tar.gz "https://github.com/BookStackApp/BookStack/archive/v${BOOKSTACK_TAG}.tar.gz" && \
+    curl -SL -o bookstack.tar.gz "https://codeberg.org/bookstack/bookstack/archive/v${BOOKSTACK_TAG}.tar.gz" && \
     mkdir -p /bookstack && \
     tar xvf bookstack.tar.gz -C /bookstack --strip-components=1 && \
     rm bookstack.tar.gz && \

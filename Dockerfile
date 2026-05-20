@@ -2,7 +2,7 @@ FROM php:8.5-apache-trixie
 
 ENV DOCKER_RUNNING=true
 
-ENV COMPOSER_VERSION=2.8.12
+ENV COMPOSER_VERSION=2.9.8
 
 # Install additional packages
 RUN apt-get update && \

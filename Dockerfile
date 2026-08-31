@@ -42,9 +42,17 @@ RUN set -eux; \
     rm bookstack.tar.gz && \
     rm -f /tmp/BOOKSTACK_VERSION
 
-# Replace the proxy IP with the real client IP
-RUN a2enmod rewrite remoteip; \
-    { \
+# Enable Apache modules
+RUN a2enmod rewrite remoteip headers
+
+# Limit Apache version disclosure
+RUN printf '%s\n' \
+    'ServerTokens Prod' \
+    'ServerSignature Off' \
+    >> /etc/apache2/apache2.conf
+
+# Configure RemoteIP for proxy support
+RUN { \
     echo RemoteIPHeader X-Real-IP ; \
     echo RemoteIPTrustedProxy 10.0.0.0/8 ; \
     echo RemoteIPTrustedProxy 172.16.0.0/12 ; \

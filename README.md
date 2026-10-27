@@ -78,7 +78,7 @@ Use a reverse proxy configuration to map the url to port `8282`.
 
 We trigger a GitHub Actions workflow to build the custom image and push it to our [Docker Hub repository](https://hub.docker.com/r/unillett/bookstack).
 
-When a new [Bookstack version](https://codeberg.org/bookstack/bookstack/releases) is available, you should update the value in the [VERSION](https://github.com/unil-lettres/bookstack/blob/main/VERSION) file to reference the new tag. When the change is pushed to the repository, the workflow will automatically build the new image and push it to [Docker Hub](https://hub.docker.com/r/unillett/bookstack).
+When a new [Bookstack version](https://codeberg.org/bookstack/bookstack/releases) is available, you should update the value in the [VERSION](https://github.com/unil-lettres/bookstack/blob/development/VERSION) file to reference the new tag. When the change is pushed to the repository, the workflow will automatically build the new image and push it to [Docker Hub](https://hub.docker.com/r/unillett/bookstack).
 
 If you need to trigger a rebuild or mark a custom image version, you can add a revision suffix (such as `-rev1`) to the value in the `VERSION` file. This suffix will be ignored when fetching the BookStack source code, but it allows you to distinguish builds in your workflow and Docker image tags.
 
